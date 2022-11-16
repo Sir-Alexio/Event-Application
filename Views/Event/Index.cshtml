@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Event>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary"> Event list</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Event" asp-action="Create" class="btn btn-primary">
+                Create new Event 
+            </a>
+        </div>
+        @*<div>
+            <label>Search by Id</label>
+            <input/>
+            <a asp-controller="Event" asp-action="Create" class="btn btn-primary">
+                Find
+            </a>
+        </div>*@
+        <form asp-action="Index" method="POST">
+            <div class="row input-group">
+                <input type="text" name="search" id="search" class="form-control" />
+
+                <div class="input-group-btn">
+                    <input asp-controller="Event" asp-action="Find" type="submit" value="Search" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br /><br />
+
+<table class="table table-bordered table-striped" style="width:100%">
+    
+    <thead>
+        <tr>
+            <th>
+                Event Id
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Speaker
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Place
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td width="3%">
+                    @item.Id
+                </td>
+                <td width="25%">
+                    @item.Title
+                </td>
+                <td width="35%">
+                    @item.Description
+                </td>
+                <td width="15%">
+                    @item.Speaker
+                </td>
+                <td width="15%">
+                    @item.CreatedDate
+                </td>
+                <td width="15%">
+                    @item.Place
+                </td>
+                <td>
+                    <div>
+                        <a asp-controller="Event" asp-action="Edit"asp-route-id=@item.Id>Edit</a>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <a asp-controller="Event" asp-action="Delete"asp-route-id=@item.Id>Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

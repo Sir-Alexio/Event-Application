@@ -1,0 +1,46 @@
+﻿@model Event
+
+<form method="post" asp-action="Find">
+    <input asp-for="Id" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Event number @Model.Id</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" disabled class="form-control"/>
+            
+        </div>
+        <div class="mb-3">
+            <label asp-for="Speaker"></label>
+            <input asp-for="Speaker" disabled class="form-control"/>
+             
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" disabled class="form-control"/>
+             
+        </div>
+        <div class="mb-3">
+            <label asp-for="CreatedDate"></label>
+            <input asp-for="CreatedDate" disabled class="form-control"/>
+             
+        </div>
+        <div class="mb-3">
+            <label asp-for="Place"></label>
+            <input asp-for="Place" disabled class="form-control"/>
+             
+        </div>
+        
+            <a asp-controller="Event" asp-action="Index" class="btn btn-secondary">
+                Back
+            </a>
+            <a asp-controller="Event" asp-action="Edit" asp-route-id=@Model.Id style="color:yellow" class="btn btn-secondary">
+                Edit
+            </a>
+            <a asp-controller="Event" asp-action="Delete" asp-route-id=@Model.Id style="color:red" class="btn btn-secondary">
+                Delete
+            </a>
+    </div>
+</form>
